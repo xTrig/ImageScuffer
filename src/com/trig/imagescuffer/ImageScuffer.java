@@ -1,5 +1,8 @@
 package com.trig.imagescuffer;
 
+import com.trig.imagescuffer.algorithms.EveryByte;
+import com.trig.imagescuffer.algorithms.OneRandomBit;
+import com.trig.imagescuffer.algorithms.ScuffAlgorithm;
 import org.apache.commons.io.FilenameUtils;
 
 import java.io.File;
@@ -14,10 +17,9 @@ import java.util.Scanner;
  */
 public class ImageScuffer {
 
-
-
     private File srcImage, dstImage;
     private Random rand = new Random();
+    private ScuffAlgorithm algorithm;
 
     //Static variables used by main() during CLI
     private static File inImage;
@@ -67,6 +69,7 @@ public class ImageScuffer {
     public ImageScuffer(File srcImage, File dstImage) {
         this.srcImage = srcImage;
         this.dstImage = dstImage;
+        this.algorithm = new OneRandomBit();
     }
 
     /**
@@ -88,7 +91,7 @@ public class ImageScuffer {
             while(fis.read(inBuf) != -1) { //Keep reading the src file until we reach the end of the file
                 byteCounter+= bytesPerBuf; //Increment the byte counter
                 if(byteCounter % 2048 == 0) { //Every 2K bytes will have modified data
-                    byte[] newBytes = rewriteBits(inBuf); //Flip a random bit
+                    byte[] newBytes = algorithm.rewriteBytes(inBuf); //Flip a random bit
                     fos.write(newBytes); //Write the new image data
                 } else {
                     fos.write(inBuf); //Write the original file data if the data shouldn't be modified
@@ -104,14 +107,4 @@ public class ImageScuffer {
         }
     }
 
-    /**
-     * Flips a random bit in the byte[]
-     * @param buf The buffer to modify
-     * @return The new byte[] with modified vals
-     */
-    private byte[] rewriteBits(byte[] buf) {
-        BitSet bits = BitSet.valueOf(buf);
-        bits.flip(rand.nextInt(bits.length()));
-        return bits.toByteArray();
-    }
 }
