@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="ImageScuffer:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/ImageScuffer_jar</output-path>
-    <root id="archive" name="ImageScuffer.jar">
-      <element id="module-output" name="Image Scuffer" />
-      <element id="extracted-dir" path="C:/Java/lib/commons-io-2.6.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
