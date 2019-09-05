@@ -1,6 +1,5 @@
 package com.trig.imagescuffer;
 
-import com.trig.imagescuffer.algorithms.EveryByte;
 import com.trig.imagescuffer.algorithms.OneRandomBit;
 import com.trig.imagescuffer.algorithms.ScuffAlgorithm;
 import org.apache.commons.io.FilenameUtils;
@@ -8,7 +7,6 @@ import org.apache.commons.io.FilenameUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.BitSet;
 import java.util.Random;
 import java.util.Scanner;
 
