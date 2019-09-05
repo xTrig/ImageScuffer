@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class ImageScuffer {
 
 
-    
+
     private File srcImage, dstImage;
     private Random rand = new Random();
 
