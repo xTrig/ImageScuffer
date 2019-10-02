@@ -44,7 +44,7 @@ public class ImageScuffer {
                 System.exit(0);
             }
             String ext = FilenameUtils.getExtension(inImage.getName());
-            outImage = new File("out." + ext);
+            outImage = new File(FilenameUtils.getBaseName(inImage.getName()) + "_scuffed." + ext);
             System.out.println("Making output file: " + outImage.getPath());
             try {
                 if(inImage.getCanonicalPath().equals(outImage.getCanonicalPath())) {
